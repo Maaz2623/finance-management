@@ -15,6 +15,13 @@
       "when": 1723811020667,
       "tag": "0001_flat_norman_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1724157452432,
+      "tag": "0002_dapper_black_tom",
+      "breakpoints": true
     }
   ]
 }

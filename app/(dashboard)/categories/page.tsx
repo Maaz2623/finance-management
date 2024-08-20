@@ -9,19 +9,22 @@ import { DataTable } from "@/components/data-table";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
+import { useNewCategory } from "@/features/categories/hooks/use-new-category";
+import { useGetCategories } from "@/features/categories/api/use-get-categories";
+import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
 
-const AccountsPage = () => {
-  const newAccount = useNewAccount();
+const CategoriesPage = () => {
+  const newCategory = useNewCategory();
 
-  const accountsQuery = useGetAccounts();
+  const categoryQuery = useGetCategories();
 
-  const accounts = accountsQuery.data || [];
+  const accounts = categoryQuery.data || [];
 
-  const deleteAccounts = useBulkDeleteAccounts();
+  const deleteAccounts = useBulkDeleteCategories();
 
-  const isDisabled = accountsQuery.isLoading || deleteAccounts.isPending;
+  const isDisabled = categoryQuery.isLoading || deleteAccounts.isPending;
 
-  if (accountsQuery.isLoading) {
+  if (categoryQuery.isLoading) {
     return (
       <div className="max-w-screen-2xl w-full pb-10 -mt-24">
         <Card className="border-none drop-shadow-none">
@@ -42,8 +45,10 @@ const AccountsPage = () => {
     <div className="max-w-screen-2xl w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-none">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="text-xl line-clamp-1">Accounts Page</CardTitle>
-          <Button onClick={newAccount.onOpen} size={`sm`}>
+          <CardTitle className="text-xl line-clamp-1">
+            Categories Page
+          </CardTitle>
+          <Button onClick={newCategory.onOpen} size={`sm`}>
             <PlusIcon className="size-4 mr-2" />
             Add new
           </Button>
@@ -65,4 +70,4 @@ const AccountsPage = () => {
   );
 };
 
-export default AccountsPage;
+export default CategoriesPage;
